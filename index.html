@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+  <div class="logo">Hassan.Dev</div>
+  
+  <!-- The Mobile Menu Button (Hamburger) -->
+  <button class="menu-toggle" id="mobile-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="nav-links" id="nav-list">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="Hassan CV.pdf" download="Hassan_Raza CV.pdf" class="cv-btn">Download CV</a></li>
+  </ul>
+</nav>
+</nav>
+        <button class="menu-toggle" id="menuToggles">
+            <i class="fas fa-bars"></i>
+        </button>
+        </nav>
+    </header>
+    <section class="Hero-section" id="home">
+        <div class="hero-content">
+        <h1>Hi, I'm Hassan</h1>
+<p>I am a <span id="typing-text" style="color: #00a8ff; font-weight: bold;"></span>|</p>
+        <a href="#projects" class="btn">View My Work</a>
+    </div>
+    </section>
+    <section id="about" class="about-section">
+    <h2>About Me</h2>
+    <div class="reveal">
+  <h2>About Me</h2>
+  <p>Your text here...</p>
+</div>
+    <div class="about-container">
+        <div class="about-text">
+            <p>Hello! I am a BSCS student focused on crafting clean, efficient web applications. I enjoy solving complex structural problems, working with database architectures, and turning ideas into functional code layouts.</p>
+            
+            <h3>My Core Skills</h3>
+            <div class="skills-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>C# / ASP.NET Core</span>
+                <span>SQL Server / SQLite</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="projects-section">
+    <h2>My Projects</h2>
+    
+    <div class="projects-grid">
+        
+        <div class="project-card">
+            <h3>Campus Hub Platform</h3>
+            <p>A web application built to manage localized university student utilities and classified services efficiently.</p>
+            <div class="project-tech">ASP.NET Core • SQL</div>
+        </div>
+        
+        <div class="project-card">
+            <h3>Timetable Scheduler</h3>
+            <p>A relational database management system designed to generate conflict-free academic timetables.</p>
+            <div class="project-tech">C# • SQL Server</div>
+        </div>
+        
+        <div class="project-card">
+            <h3>Pharmacy Manager</h3>
+            <p>A lightweight database solution focused on executing CRUD operations for inventory tracking.</p>
+            <div class="project-tech">SQLite</div>
+        </div>
+        
+    </div>
+</section>
+<section id="contact" class="contact-section">
+    <h2>Get In Touch</h2>
+    <p>Want to collaborate or discuss a project? Drop me a message!</p>
+    
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+    <br> <br> 
+    <footer>
+      <h6><b> &copy;</b> 2026 HASSAN.DEV. All rights reserved.</h6> 
+    </footer>
+</section>
+<script>
+  const words = ["Computer Science Student.", "Web Developer.", "Problem Solver."];
+  let wordIndex = 0;
+  let charIndex = 0;
+  
+  function type() {
+    if (charIndex < words[wordIndex].length) {
+      document.getElementById("typing-text").innerHTML += words[wordIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, 100); // Speed of typing
+    } else {
+      setTimeout(erase, 2000); // Wait 2 seconds before erasing
+    }
+  }
+
+  function erase() {
+    if (charIndex > 0) {
+      let str = words[wordIndex].substring(0, charIndex - 1);
+      document.getElementById("typing-text").innerHTML = str;
+      charIndex--;
+      setTimeout(erase, 50); // Speed of erasing
+    } else {
+      wordIndex = (wordIndex + 1) % words.length; // Move to next word
+      setTimeout(type, 500);
+    }
+  }
+
+  // Start the effect
+  document.addEventListener("DOMContentLoaded", type);
+
+  function scrollAppear() {
+  let reveals = document.querySelectorAll('.reveal');
+  
+  reveals.forEach(section => {
+    let position = section.getBoundingClientRect().top;
+    let screenHeight = window.innerHeight / 1.3; // Triggers halfway down the screen
+    
+    if (position < screenHeight) {
+      section.classList.add('show');
+    }
+  });
+}
+
+window.addEventListener('scroll', scrollAppear);
+</script>
+</body>
+</html>

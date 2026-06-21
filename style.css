@@ -1,0 +1,358 @@
+:root {
+    --bg-color: #0f172a;       /* Dark background */
+    --card-bg: #1e293b;        /* Slightly lighter background for cards */
+    --text-color: #f8fafc;     /* Bright text */
+    --text-muted: #94a3b8;     /* Muted grey text for descriptions */
+    --accent-color: #38bdf8;   /* Sky blue accent color */
+    --nav-height: 70px;        /* Consistent height for navbar */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;   /* Makes clicking nav links smooth-scroll */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+/* --- Navigation --- */
+header {
+    background-color: rgba(15, 23, 42, 0.9);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #1e293b;
+}
+
+/* 1. Align the Logo and the entire Link List horizontally */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Pushes logo to left, links to right */
+  align-items: center;            /* Vertically centers them */
+  padding: 20px 40px;             /* Gives it some breathing room */
+  background-color: #0b132b;      /* Matches your dark background */
+}
+
+/* 2. Turn the vertical list into a horizontal row */
+.nav-links {
+  display: flex;                  /* Aligns the <li> items horizontally */
+  list-style: none;               /* REMOVES THE BULLET POINTS */
+  margin: 0;
+  padding: 0;
+  gap: 20px;                      /* Adds spacing between each link */
+}
+
+/* 3. Style the links (optional, but makes it look clean) */
+.nav-links a {
+  text-decoration: none;          /* Removes the default underline */
+  color: #00a8ff;                 /* Matches your light blue theme */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;                 /* Turns white on hover */
+}
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+
+
+.menu-toggle {
+    display: none;             /* Keeps the menu button hidden on desktop */
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+/* --- Desktop styling for the toggle button (Hide it by default) --- */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 100%;
+  background-color: #00a8ff; /* Matches your theme blue */
+  border-radius: 10px;
+}
+
+/* --- Mobile Responsiveness (Screens 768px and smaller) --- */
+@media screen and (max-width: 768px) {
+  
+  /* Show the hamburger menu button */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Hide the links off-screen by default, stack them vertically */
+  .nav-links {
+    display: none; /* We will toggle this to 'flex' using JavaScript */
+    flex-direction: column;
+    position: absolute;
+    top: 70px;   /* Positions it right below the navbar row */
+    left: 0;
+    width: 100%;
+    background-color: #0b132b; /* Matches your dark background */
+    padding: 20px 0;
+    text-align: center;
+    gap: 20px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Make the active menu show up */
+  .nav-links.active {
+    display: flex;
+  }
+  
+  /* Make the CV button fit the mobile layout width */
+  .nav-links .cv-btn {
+    display: inline-block;
+    margin: 0 auto;
+  }
+}
+section {
+    padding: 80px 10%;
+}
+
+/* --- Section Headings Styling --- */
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+/* Creates a small decorative blue line under every H2 heading */
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 10px auto 0 auto;
+    border-radius: 2px;
+}
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 10px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-2px); /* Subtle lift on hover */
+    opacity: 0.9;
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 10px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-2px); /* Subtle lift on hover */
+    opacity: 0.9;
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+/* --- Hero Section --- */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+/* --- About Section --- */
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap; /* Lets tags drop to next line if screen is narrow */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.skills-tags span {
+    background-color: var(--card-bg);
+    border: 1px solid #334155;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+/* --- Hero Section --- */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+/* --- About Section --- */
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap; /* Lets tags drop to next line if screen is narrow */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.skills-tags span {
+    background-color: var(--card-bg);
+    border: 1px solid #334155;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+/* --- Contact Form --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-section p {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    background-color: var(--card-bg);
+    border: 1px solid #334155;
+    color: var(--text-color);
+    padding: 12px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+.hero-subtext {
+  font-size: 1.2rem;
+  color: #ccd6f6;
+}
+
+#typing-text {
+  color: #00a8ff; /* Your theme's bright blue */
+  font-weight: bold;
+}
+
+/* Flashing cursor animation */
+.cursor {
+  color: #00a8ff;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+/* This hides the section at first */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-in-out;
+}
+
+/* This makes it fade in beautifully */
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media screen and (max-width: 768px) {
+  /* Makes the text smaller on phones so it stays on one line */
+  .hero-subtext {
+    font-size: 1rem; 
+  }
+}
