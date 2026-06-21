@@ -356,3 +356,8 @@ h2::after {
     font-size: 1rem; 
   }
 }
+
+/* When JavaScript adds the 'active' class, show the menu! */
+.nav-links.active {
+  display: flex !important; 
+}
