@@ -145,6 +145,17 @@
 }
 
 window.addEventListener('scroll', scrollAppear);
+    <script>
+  // 1. Grab the 3-bar menu button and the links list
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navList = document.getElementById('nav-list');
+
+  // 2. Listen for a click on the 3-bar menu
+  mobileMenu.addEventListener('click', () => {
+    // 3. This adds the 'active' class if it's missing, or removes it if it's there
+    navList.classList.toggle('active');
+  });
+</script>
 </script>
 </body>
 </html>
